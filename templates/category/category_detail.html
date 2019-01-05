@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        {% if request.user == category.author %}
+            <a class="btn btn-danger" href="{% url 'category_delete' category.pk %}">Delete</a>
+        {% endif %}
+        <h2>{{ category.title }}</h2>
+        <p>{{ category.description }}</p>
+    </div>
+{% endblock %}

@@ -11,7 +11,8 @@ class Operation(models.Model):
 
 
 class Transaction(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False, blank=False)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False, blank=False,
+                                 related_name='category_set')
     operation_type = models.ForeignKey(Operation, on_delete=models.CASCADE, null=False, blank=False)
     amount = models.DecimalField(max_digits=8, decimal_places=2, null=False, blank=False)
     short_description = models.CharField(max_length=255, null=False, blank=False)

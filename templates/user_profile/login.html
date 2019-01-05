@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <div class="container">
+        {% crispy form %}
+        <p class="text-muted">
+            If you haven't account please contact with administrator
+        </p>
+    </div>
+{% endblock %}

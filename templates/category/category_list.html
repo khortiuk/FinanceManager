@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <a class="btn btn-primary"  href="{% url 'category_create' %}">Add new category</a>
+        <ul>
+            {% for category in categorys %}
+                <li><a href="{% url 'category_detail' category.pk %}">{{ category.title }}({{ category.category_set.count }})</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

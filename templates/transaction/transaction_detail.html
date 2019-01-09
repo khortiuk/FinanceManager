@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block body %}
+    <div class="container">
+        <h3>
+            Category:
+            <a href="{% url 'category_detail' transaction.category.pk %}">
+                {{ transaction.category }}
+            </a>
+        </h3>
+        <hr>
+        {% if request.user == transaction.author %}
+            <a class="btn btn-danger" href="{% url 'transaction_delete' transaction.pk %}">Delete</a>
+            <br>
+        {% endif %}
+        <span class="text-muted">
+            {{ transaction.author }} | {{ transaction.date|naturaltime }}
+        </span>
+        <p>
+            {{ transaction.operation_type }} - {{ transaction.amount|intword }}
+        </p>
+        <p class="text-justify">
+            {{ transaction.description }}
+        </p>
+    </div>
+{% endblock %}

@@ -8,5 +8,8 @@ class Category(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     date_added = models.DateTimeField(auto_now_add=True, null=False, blank=False)
 
+    def transactions(self):
+        return self.trans
+
     def __str__(self):
         return self.title

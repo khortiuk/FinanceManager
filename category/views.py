@@ -1,6 +1,7 @@
 from django.views.generic import ListView, CreateView, DetailView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from transaction.models import Transaction
 from .models import Category
 from .forms import CategoryCreateForm
 

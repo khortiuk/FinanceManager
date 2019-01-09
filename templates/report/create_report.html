@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <div class="container">
+        {% crispy form %}
+    </div>
+{% endblock %}
+{% block script %}
+    {{ block.super }}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <script>
+        d = new Date();
+        today = d.getDate();
+        d.setDate(d.getDate() - 7);
+        start_date = new Date(d);
+        $(function () {
+            $('input[name="date_range"]').daterangepicker({
+                opens: 'center',
+                drops: 'up',
+                minDate: '{{ first_date|date:"d/m/Y" }}',
+                maxDate: '{{ last_date|date:"d/m/Y" }}',
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }
+            });
+            $('input[name="date_range"]').data('daterangepicker').setStartDate('{{ first_date|date:"d/m/Y" }}');
+            $('input[name="date_range"]').data('daterangepicker').setEndDate(today);
+            $('input[name="date_range"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+            });
+        });
+    </script>
+{% endblock %}

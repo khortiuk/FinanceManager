@@ -6,5 +6,14 @@
         {% endif %}
         <h2>{{ category.title }}</h2>
         <p>{{ category.description }}</p>
+        <ul>
+            {% for transaction in category.transaction_set.all %}
+                <li>[{{ transaction.author }}] {{ transaction.short_description }}
+                    - {{ transaction.operation_type }} ({{ transaction.amount }})
+                <span class="text-muted">{{ transaction.date }}</span>
+                </li>
+            {% endfor %}
+
+        </ul>
     </div>
 {% endblock %}

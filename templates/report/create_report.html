@@ -19,16 +19,16 @@
             $('input[name="date_range"]').daterangepicker({
                 opens: 'center',
                 drops: 'up',
-                minDate: '{{ first_date|date:"d/m/Y" }}',
-                maxDate: '{{ last_date|date:"d/m/Y" }}',
+                minDate: '{{ first_date|date:"Y/m/d" }}',
+                maxDate: '{{ last_date|date:"Y/m/d" }}',
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY/MM/DD'
                 }
             });
-            $('input[name="date_range"]').data('daterangepicker').setStartDate('{{ first_date|date:"d/m/Y" }}');
+            $('input[name="date_range"]').data('daterangepicker').setStartDate('{{ first_date|date:"Y/m/d" }}');
             $('input[name="date_range"]').data('daterangepicker').setEndDate(today);
             $('input[name="date_range"]').on('apply.daterangepicker', function (ev, picker) {
-                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+                $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
             });
         });
     </script>

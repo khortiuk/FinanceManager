@@ -120,4 +120,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# as declared in NginX conf, it must match /opt/services/djangoapp/static/
+STATIC_ROOT = "/var/www/CultureAnalyzer/static/"
+
+# do the same for media files, it must match /opt/services/djangoapp/media/
+MEDIA_ROOT = "/var/www/CultureAnalyzer/media/"
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

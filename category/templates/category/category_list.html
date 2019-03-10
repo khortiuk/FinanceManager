@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+{#    <div class="container">#}
+        <a class="btn btn-primary" href="{% url 'category_create' %}">Add new category</a>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Author</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categorys %}
+                <tr>
+                    <th scope="row">{{ category.pk }}</th>
+                    <td><a href="{% url 'category_detail' category.pk %}">{{ category.title }}</a></td>
+                    <td>{{ category.description }}</td>
+                    <td>{{ category.author }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{#    </div>#}
+{% endblock %}

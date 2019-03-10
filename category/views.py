@@ -8,7 +8,7 @@ from .forms import CategoryCreateForm
 
 class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
-    template_name = 'category/category_list.html'
+    template_name = 'category/templates/category_list.html'
     context_object_name = 'categorys'
     login_url = 'sing-in'
 
@@ -16,7 +16,7 @@ class CategoryListView(LoginRequiredMixin, ListView):
 class CreateCategoryView(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryCreateForm
-    template_name = 'category/category_create.html'
+    template_name = 'category/templates/category_create.html'
     login_url = 'sing-in'
     success_url = reverse_lazy('category_list')
 
@@ -29,7 +29,7 @@ class CreateCategoryView(LoginRequiredMixin, CreateView):
 
 class CategoryDetailView(LoginRequiredMixin, DetailView):
     model = Category
-    template_name = 'category/category_detail.html'
+    template_name = 'category/templates/category_detail.html'
     context_object_name = 'category'
     login_url = 'sing-in'
 

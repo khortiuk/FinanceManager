@@ -1,11 +1,8 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from django.views import generic
 from django.shortcuts import redirect
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.views import LogoutView
-
-from .models import UserProfile
 from .froms import UserLoginFrom
 
 
@@ -36,8 +33,3 @@ class LogOutView(LogoutView):
     def get(self, request, *args, **kwargs):
         self.next_page = self.request.GET.get('next') or '/'
         super(LogOutView, self).get(request, *args, **kwargs)
-    # def get(self, request, *args, **kwargs):
-    #     # self.url = request.path
-    #     print(request.path)
-    #     logout(request)
-    #     return super(LogOutView, self).get(request, *args, **kwargs)

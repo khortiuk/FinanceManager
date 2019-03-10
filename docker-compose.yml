@@ -1,0 +1,33 @@
+version: '3.6'
+
+services:
+  app:
+    build: .
+    restart: always
+    volumes:
+      - .:/var/www/finance-manager
+      - static_volume:/var/www/finance-manager/static
+    entrypoint:
+      - /var/www/finance-manager/entry-point.sh
+    networks:
+      - nginx_network
+
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./config/nginx/local.conf:/etc/nginx/local.conf
+      - static_volume:/var/www/finance-manager/static
+    depends_on:
+      - app
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
+
+volumes:
+  static_volume:

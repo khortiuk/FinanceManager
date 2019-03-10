@@ -21,7 +21,7 @@ class TransactionDetailView(LoginRequiredMixin, DetailView):
 
 class TransactionDeleteView(LoginRequiredMixin, DeleteView):
     model = Transaction
-    template_name = 'category/category_confirm_delete.html'
+    template_name = 'category/../category/templates/category_confirm_delete.html'
     success_url = reverse_lazy('transaction_list')
     login_url = 'sing-in'
 

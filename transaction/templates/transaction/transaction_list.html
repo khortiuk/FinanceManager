@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block body %}
+{#    <div class="container">#}
+        <a class="btn btn-primary" href="{% url 'transaction_create' %}">New transaction</a>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Category</th>
+                <th scope="col">Operation type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Author</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <th scope="row">{{ transaction.pk }}</th>
+                    <td><a href="{% url 'category_detail' transaction.category.pk %}">{{ transaction.category }}</a></td>
+                    <td>{{ transaction.operation_type }}</td>
+                    <td><a href="{% url 'transaction_detail' transaction.pk %}">{{ transaction.description|truncatewords:7 }}</a></td>
+                    <td>{{ transaction.author }}</td>
+                    <td>{{ transaction.amount }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+{#    </div>#}
+{% endblock %}

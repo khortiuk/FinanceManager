@@ -18,7 +18,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./config/nginx/local.conf:/etc/nginx/local.conf
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
       - static_volume:/var/www/finance-manager/static
     depends_on:
       - app
